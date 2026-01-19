@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: flance
+
+  profiles:
+    active: dev
+
+server:
+  port: 9000
