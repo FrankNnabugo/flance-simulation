@@ -7,20 +7,18 @@ import java.math.BigDecimal;
 
 @Component
 @Slf4j
-public class FlutterWaveGateWay implements PaymentGateway {
+public class FlutterWaveGateWay implements PaymentGateway{
 
     @Override
     public void processPayment(String accountNumber, BigDecimal amount) {
 
-        log.info("Simulating Flutterwave payment for accountNumber {}, amount {}",
-                accountNumber, amount);
+        log.info("Simulating Flutterwave payment for accountAccount {} amount {}",
+    accountNumber, amount);
 
+
+
+    @Override
+    public GateWayType getPaymentGateway() {
+        return GateWayType.FLUTTER_WAVE;
     }
-
-        @Override
-        public GateWayType getPaymentGateway () {
-            return GateWayType.FLUTTER_WAVE;
-
-        }
-    }
-
+}

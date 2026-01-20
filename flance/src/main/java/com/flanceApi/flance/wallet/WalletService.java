@@ -4,6 +4,7 @@ import com.flanceApi.flance.account.BankAccountRepository;
 import com.flanceApi.flance.account.BankAccounts;
 import com.flanceApi.flance.gateway.PaymentGateway;
 import com.flanceApi.flance.gateway.PaymentGatewayResolver;
+import com.flanceApi.flance.gateway.PaymentRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -82,7 +83,7 @@ public class WalletService {
                 .orElseThrow(()-> new RuntimeException("Bank account not linked to wallet"));
 
         PaymentGateway gateway =
-                paymentGatewayResolver.resolvePaymentGateway(request.getPaymentGateWay());
+                paymentGatewayResolver.resolve(request.getPaymentGateWay());
 
         gateway.processPayment(request.getAccountNumber(), request.getAmount());
 

@@ -1,5 +1,7 @@
 package com.flanceApi.flance.gateway;
 
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,13 +14,13 @@ public class PaymentGatewayResolver {
     private final Map<GateWayType, PaymentGateway> gatewayMap;
 
 
-    public PaymentGatewayResolver(List<PaymentGateway> paymentGateways) {
-       this.gatewayMap = paymentGateways.stream()
+    public PaymentGatewayResolver(List<PaymentGateway> gatewayList) {
+       this.gatewayMap = gatewayList.stream()
                 .collect(Collectors.toMap(PaymentGateway::getPaymentGateway, g -> g));
     }
 
 
-    public PaymentGateway resolvePaymentGateway(GateWayType type) {
+    public PaymentGateway resolve(GateWayType type) {
          PaymentGateway gateway = gatewayMap.get(type);
 
         if (gateway == null) {
