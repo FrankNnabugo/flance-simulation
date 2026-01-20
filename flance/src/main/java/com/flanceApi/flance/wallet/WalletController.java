@@ -1,7 +1,6 @@
 package com.flanceApi.flance.wallet;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,9 +28,7 @@ public class WalletController {
 
     @GetMapping("/{walletId}")
     public ResponseEntity<List<LinkedBankAccountResponse>> getLinkedBanks(@PathVariable String walletId){
-
         List<LinkedBankAccountResponse> banks = walletService.getLinkedBanks(walletId);
-
         return ResponseEntity.ok(banks);
 
     }
